@@ -2,3 +2,12 @@ auth:
   jwt:
     secret: 123456
     expire: 604800
+wx:
+  miniapp:
+    config:
+      appid:
+      secret:
+      version: develop
+      #      token: 11
+      #      aeskey: 11
+      msgDataFormat: JSON
