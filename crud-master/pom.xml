@@ -19,11 +19,11 @@
             <artifactId>spring-web</artifactId>
             <version>5.0.4.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>wx-auth-Interceptor</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.example</groupId>-->
+<!--            <artifactId>wx-auth-Interceptor</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <artifactId>crud-master</artifactId>

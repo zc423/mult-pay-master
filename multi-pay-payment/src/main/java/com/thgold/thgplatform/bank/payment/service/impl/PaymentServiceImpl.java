@@ -7,6 +7,7 @@ import com.thgold.thgplatform.bank.payment.channel.factory.*;
 import com.thgold.thgplatform.bank.payment.constant.ConstantEnum;
 import com.thgold.thgplatform.bank.payment.service.PaymentService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class PaymentServiceImpl implements PaymentService {
     private ChannelRefundServiceFactory channelRefundServiceFactory;
     private ChannelRefundNoticeServiceFactory channelRefundNoticeServiceFactory;
     private ChannelUnifiedServiceFactory channelUnifiedServiceFactory;
-
+    private ChannelCloseServiceFactory channelCloseServiceFactory;
 
     /**
      * 创建订单
@@ -88,7 +89,8 @@ public class PaymentServiceImpl implements PaymentService {
      * 关闭渠道订单
      */
     @Override
-    public void close(PayOrder businessOrder) {
-
+    public void close(MerchantProductConfig merchant, PayOrder payOrder) {
+        channelCloseServiceFactory.getCloseService(payOrder.getPayTypeEnums()).callClose(merchant, payOrder);
     }
+
 }

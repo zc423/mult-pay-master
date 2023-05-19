@@ -3,6 +3,8 @@ package com.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author DCZhang
  * @title User
@@ -15,5 +17,10 @@ public class User {
     private Long id;
 
     private String name;
+
+    private String password;
+    private final String username;
+
+    private List<String> roles;
 
 }

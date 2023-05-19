@@ -3,7 +3,6 @@ package com.thgold.thgplatform.bank.payment.channel.factory;
 import cn.hutool.core.collection.CollectionUtil;
 import com.thgold.thgplatform.bank.payment.channel.impl.AbstractChannelRefundService;
 import com.thgold.thgplatform.bank.payment.constant.ConstantEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -19,14 +18,12 @@ import java.util.Map;
  */
 @Service
 public class ChannelRefundServiceFactory {
-    @Autowired
-    private static List<AbstractChannelRefundService> REFUND_SERVICE_LIST;
 
     private static Map<ConstantEnum.PayServiceTypeEnum, AbstractChannelRefundService> REFUND_SERVICE_MAP = new HashMap<>();
 
-    static {
-        if (CollectionUtil.isNotEmpty(REFUND_SERVICE_LIST)) {
-            REFUND_SERVICE_LIST.forEach(refundService -> {
+    ChannelRefundServiceFactory(List<AbstractChannelRefundService> refundServiceList) {
+        if (CollectionUtil.isNotEmpty(refundServiceList)) {
+            refundServiceList.forEach(refundService -> {
                 REFUND_SERVICE_MAP.put(refundService.getPayType(), refundService);
             });
         }

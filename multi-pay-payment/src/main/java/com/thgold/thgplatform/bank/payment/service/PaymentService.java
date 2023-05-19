@@ -49,7 +49,7 @@ public interface PaymentService {
     /**
      * 关闭渠道订单
      */
-    void close(PayOrder businessOrder);
+    void close(MerchantProductConfig merchant, PayOrder payOrder);
 
 
 }

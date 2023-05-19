@@ -13,6 +13,7 @@
         <module>wx-auth-Interceptor</module>
         <module>crud-master</module>
         <module>service-common</module>
+        <module>wx-auth-security</module>
     </modules>
 
     <dependencies>
