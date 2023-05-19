@@ -5,8 +5,6 @@ import com.thgold.thgplatform.bank.payment.bo.PayOrder;
 import com.thgold.thgplatform.bank.payment.bo.Result;
 import com.thgold.thgplatform.bank.payment.channel.factory.*;
 import com.thgold.thgplatform.bank.payment.constant.ConstantEnum;
-import com.thgold.thgplatform.bank.payment.constant.ProductServiceEnum;
-import com.thgold.thgplatform.bank.payment.rq.UnifiedOrderRQ;
 import com.thgold.thgplatform.bank.payment.service.PaymentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 @AllArgsConstructor
 @Service
 public class PaymentServiceImpl implements PaymentService {
-
     private ChannelPayServiceFactory channelPayServiceFactory;
     private ChannelNoticeServiceFactory channelNoticeServiceFactory;
     private ChannelRefundServiceFactory channelRefundServiceFactory;
@@ -66,8 +63,8 @@ public class PaymentServiceImpl implements PaymentService {
      * 支付结果同步调用
      */
     @Override
-    public Result syncPay(PayOrder businessOrder, ConstantEnum.PayServiceTypeEnum payTypeEnums) {
-        Result notice = channelNoticeServiceFactory.getNoticeService(payTypeEnums).syncNotice(businessOrder);
+    public Result syncPay(PayOrder businessOrder) {
+        Result notice = channelNoticeServiceFactory.getNoticeService(businessOrder.getPayTypeEnums()).syncNotice(businessOrder);
         return notice;
     }
 

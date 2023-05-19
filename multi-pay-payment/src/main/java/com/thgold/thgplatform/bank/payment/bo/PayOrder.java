@@ -1,5 +1,6 @@
 package com.thgold.thgplatform.bank.payment.bo;
 
+import com.thgold.thgplatform.bank.payment.constant.ConstantEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -13,4 +14,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PayOrder {
     private Long id;
+
+    private ConstantEnum.PayServiceTypeEnum payTypeEnums;
 }

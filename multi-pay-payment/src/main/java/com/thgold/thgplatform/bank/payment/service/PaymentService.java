@@ -34,7 +34,7 @@ public interface PaymentService {
     /**
      * 支付结果同步调用(内部调用,正金通支付完成调用)
      */
-    Result syncPay(PayOrder businessOrder, ConstantEnum.PayServiceTypeEnum payTypeEnums);
+    Result syncPay(PayOrder businessOrder);
 
     /**
      * 退款回调

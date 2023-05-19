@@ -1,0 +1,4 @@
+auth:
+  jwt:
+    secret: 123456
+    expire: 604800
