@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Demo</title>
+  <meta charset="utf-8">
+</head>
+<body>
+<div>
+  <input id="input-box" type="text">
+  <button id="send-button">Send</button>
+</div>
+<div id="message-box"></div>
+
+<script>
+window.addEventListener("load", function() {
+  const inputBox = document.getElementById("input-box");
+  const sendButton = document.getElementById("send-button");
+  const messageBox = document.getElementById("message-box");
+
+  const ws = new WebSocket("ws://localhost:8080/my-websocket-endpoint");
+
+  ws.onopen = function () {
+    console.log("WebSocket opened");
+  };
+
+  ws.onmessage = function (event) {
+    const receivedMessage = event.data;
+    const messageElement = document.createElement("div");
+    messageElement.textContent = receivedMessage;
+    messageBox.appendChild(messageElement);
+  };
+
+  ws.onclose = function (event) {
+    console.log("WebSocket closed: " + event.code + " " + event.reason);
+  };
+
+  function sendMessageToTarget(target, message) {
+    ws.send(target + "," + message);
+  }
+
+  sendButton.addEventListener("click", sendMessage);
+
+  inputBox.addEventListener("keyup", function (e) {
+    if (e.keyCode === 13) {
+      sendMessage();
+    }
+  });
+
+  function sendMessage() {
+    const message = inputBox.value;
+    inputBox.value = "";
+    sendMessageToTarget("1", message);
+  }
+});
+
+window.addEventListener("unload", function() {
+  ws.close();
+});
+</script>
+</body>
+</html>

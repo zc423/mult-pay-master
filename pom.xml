@@ -14,6 +14,7 @@
         <module>crud-master</module>
         <module>service-common</module>
         <module>wx-auth-security</module>
+        <module>user-chat</module>
     </modules>
 
     <dependencies>
